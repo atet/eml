@@ -127,6 +127,8 @@ Issue | Solution
 
 ### Subject Line Base64 Encoding in `*.eml` File
 
+> NOTE: Encoding of special characters not required for text in the Body due to its `MIME-Version`, `Content-Type`, and `Content-Transfer-Encoding` parameters
+
 The subject line in the output EML file is encoded to ensure that special characters, emojis, and international languages display correctly when the `*.eml` file is opened in an email client (like Microsoft Outlook, Apple Mail, or Thunderbird).
 
 #### The Technical Reason (RFC 2047)
