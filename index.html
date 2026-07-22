@@ -62,8 +62,9 @@
                     </summary>
                     <div class="px-4 text-slate-300">
                         <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li></strong> Save CSV files as "<code>CSV (Comma delimited) (*.csv)</code>"" in Microsoft Excel.</li>
+                            <li></strong> Save CSV files as "<code>CSV (Comma delimited) (*.csv)</code>" in Microsoft Excel.</li>
                             <li>File must contain a column for emails (e.g., "<code>To</code>", "<code>CC</code>" (Optional), "<code>BCC</code>" (Optional)).</li>
+                            <li>Multiple emails can be separated by semicolon ("<code>;</code>").</li>
                             <li>First row can optionally contain "<code>Subject</code>" and "<code>Body</code>" (column headers) to embed the template (do not use "<code>\n</code>" for newlines in CSV, use <b><code>ALT+ENTER</code></b>).</li>
                             <li>All other columns act as variables (e.g., "<code>Role</code>" becomes "<code>&lt;&lt;Role&gt;&gt;</code>").</li>
                         </ul>
@@ -92,7 +93,7 @@
                     <div v-else>
                         <p class="text-slate-400 font-medium">Drag & drop your recipient CSV here</p>
                         <button @click="$refs.fileInputRef.click()" class="mt-4 px-6 py-2 bg-slate-800 border border-slate-700 rounded-xl font-medium shadow-sm hover:shadow-md transition-all text-sm">
-                            Browse Files
+                            Upload CSV File
                         </button>
                     </div>
                 </div>
