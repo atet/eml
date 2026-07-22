@@ -3,24 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAADLElEQVR4AaxVW0hUURRd+8zcxjEr1B6kZFAUERUFPQyLouEWPZw+wizqq5+i+ogeWpofFmQQFaQf4UeF0k+ChEYUaZKppdWn2JNAZ0QtHyM+Jufeczrnko/G6yTpmbvmntl77bU2e+6DYczyeHzxqXrz4f26v8yr+/z7dV/7ZODV/f5U3ffU6/EfSt3eOneMJCyDtDTh2Ku3eWcyekzkLAIhlYgSQDR/MiBCAiPaTYyK4OSquTSlqYwsg2B36z4HzHxJ3EIQTpX4L5DQiChZNnVHaUoNYh5PUzwxnCNCkgxM+ZA6skcskCZnvHrzQhbNY3aREMlTVh4joEzkaFI4aA+DE0elm4bpXnJcTFA6Y6DV4drMASQucmBDsgsbN0eG4ixKckDVhOuAsI4JIC48sTklCrl58di5Oxo79MhQnMtX47F1mztcRurDyUA0LrF+kwuBAMfd/AAKbvVEhOL86DCQsi1qnA7A5McmrEnfxYs1HDs+G3NiGQYGBPr6/oaKxcxiFmf5Chc0jWyUYG8gx4aW5hD6+wUysuNw8EgM5s1nIwJqfyA9Blm5cRbn+7chCFU0whjdjFaNxqxdTzfH/cJeFN8LIHlLFM5ejMWatTOwcpWGs5disXW7Gw8f9FqcjnZu1dh9TWigGhqUo3nfMITsc53w+wwok8ycOPhbDORk/kR93S8ojp3wcGxCg2GCOvfL+RcWBJCX24XrV7qg9oEe1YLKRsakDJTE0BDwqSmEpsYQ1F7FJgNbA9MQ0OQjzx1NcLv/AclxSq6qsTNkdn//u/ogFiY6cSE7FuezIiNDcpYu01BTHbTR51B3cnd4pr4uaM268tkAqioio0JyblzrQm31YLgMBGDI9wSawjOGAXz9bKD2dRA1ryJDcb58NGCEwlUgDXgj49wsBkhKYrqXKTh/xAaF+VwI/mG61aVeA2hGOausXNIuf9yU82qT5+k5BDqFIW4/qUhoti5T14vEUsFxQk7tjZjKuASFuBAN3DBOul4mlqpuLYMSkFlekVA2GKR0YZqnuODVgpvtYqInmKr8A8URgnfIeb81uHlaCJZWXpVUojQV5TcAAAD//2YgfYkAAAAGSURBVAMAKXub65aRZEoAAAAASUVORK5CYII=" />
+        <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAADLElEQVR4AaxVW0hUURRd+8zcxjEr1B6kZFAUERUFPQyLouEWPZw+wizqq5+i+ogeWpofFmQQFaQf4UeF0k+ChEYUaZKppdWn2JNAZ0QtHyM+Jufeczrnko/G6yTpmbvmntl77bU2e+6DYczyeHzxqXrz4f26v8yr+/z7dV/7ZODV/f5U3ffU6/EfSt3eOneMJCyDtDTh2Ku3eWcyekzkLAIhlYgSQDR/MiBCAiPaTYyK4OSquTSlqYwsg2B36z4HzHxJ3EIQTpX4L5DQiChZNnVHaUoNYh5PUzwxnCNCkgxM+ZA6skcskCZnvHrzQhbNY3aREMlTVh4joEzkaFI4aA+DE0elm4bpXnJcTFA6Y6DV4drMASQucmBDsgsbN0eG4ixKckDVhOuAsI4JIC48sTklCrl58di5Oxo79MhQnMtX47F1mztcRurDyUA0LrF+kwuBAMfd/AAKbvVEhOL86DCQsi1qnA7A5McmrEnfxYs1HDs+G3NiGQYGBPr6/oaKxcxiFmf5Chc0jWyUYG8gx4aW5hD6+wUysuNw8EgM5s1nIwJqfyA9Blm5cRbn+7chCFU0whjdjFaNxqxdTzfH/cJeFN8LIHlLFM5ejMWatTOwcpWGs5disXW7Gw8f9FqcjnZu1dh9TWigGhqUo3nfMITsc53w+wwok8ycOPhbDORk/kR93S8ojp3wcGxCg2GCOvfL+RcWBJCX24XrV7qg9oEe1YLKRsakDJTE0BDwqSmEpsYQ1F7FJgNbA9MQ0OQjzx1NcLv/AclxSq6qsTNkdn//u/ogFiY6cSE7FuezIiNDcpYu01BTHbTR51B3cnd4pr4uaM268tkAqioio0JyblzrQm31YLgMBGDI9wSawjOGAXz9bKD2dRA1ryJDcb58NGCEwlUgDXgj49wsBkhKYrqXKTh/xAaF+VwI/mG61aVeA2hGOausXNIuf9yU82qT5+k5BDqFIW4/qUhoti5T14vEUsFxQk7tjZjKuASFuBAN3DBOul4mlqpuLYMSkFlekVA2GKR0YZqnuODVgpvtYqInmKr8A8URgnfIeb81uHlaCJZWXpVUojQV5TcAAAD//2YgfYkAAAAGSURBVAMAKXub65aRZEoAAAAASUVORK5CYII=" />
     <title>Simple EML Creator</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <style>
+        /* ==========================================================================
+           1. RESET & BASE STYLES
+           ========================================================================== */
+        *, ::before, ::after { box-sizing: border-box; border: 0 solid; margin: 0; padding: 0; }
+        html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: ui-sans-serif, system-ui, sans-serif; }
+        body { background-color: #020617; color: #f1f5f9; padding-bottom: 6rem; }
+        ::-moz-selection { background-color: #6366f1; color: #fff; }
+        ::selection { background-color: #6366f1; color: #fff; }
+        a { text-decoration: inherit; color: inherit; }
+        button, input, textarea { font-family: inherit; font-size: 100%; line-height: inherit; background: transparent; color: inherit; }
+        button { cursor: pointer; }
+        ul { list-style: none; }
+        img, svg { display: block; vertical-align: middle; }
+        code { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 1em; }
+        
+        /* ==========================================================================
+           2. CUSTOM COMPONENTS
+           ========================================================================== */
         .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
-        [v-cloak] { display: none; }
+        
+        details > summary { list-style: none; } 
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] { padding-bottom: 1rem; } 
+        details[open] summary .rotate-90 { transform: rotate(180deg); }
+
+        .active-record-btn { background-color: #1e293b; border-color: #6366f1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transform: scale(1.02); }
+        
+        /* ==========================================================================
+           3. UTILITY CLASSES (Categorized)
+           ========================================================================== */
+        
+        /* Sizing & Layout */
+        .min-h-screen { min-height: 100vh; }
+        .max-w-7xl { max-width: 80rem; } .max-w-4xl { max-width: 56rem; }
+        .w-full { width: 100%; } .h-full { height: 100%; } .h-auto { height: auto; }
+        .w-3 { width: 0.75rem; } .h-3 { height: 0.75rem; }
+        .w-3\.5 { width: 0.875rem; } .h-3\.5 { height: 0.875rem; }
+        .w-4 { width: 1rem; } .h-4 { height: 1rem; }
+        .w-5 { width: 1.25rem; } .h-5 { height: 1.25rem; }
+        .w-6 { width: 1.5rem; } .h-6 { height: 1.5rem; }
+        .w-7 { width: 1.75rem; } .h-7 { height: 1.75rem; }
+        .w-8 { width: 2rem; } .w-12 { width: 3rem; } .h-12 { height: 3rem; }
+        .w-64 { width: 16rem; } .h-\[600px\] { height: 600px; }
+        
+        /* Flexbox & Grid */
+        .flex { display: flex; } .grid { display: grid; } .hidden { display: none; }
+        .inline-block { display: inline-block; } .block { display: block; }
+        .flex-col { flex-direction: column; } .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; } .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; } .justify-end { justify-content: flex-end; }
+        .flex-1 { flex: 1 1 0%; } .flex-none { flex: none; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-2 { gap: 0.5rem; } .gap-3 { gap: 0.75rem; } .gap-4 { gap: 1rem; } .gap-8 { gap: 2rem; }
+        
+        /* Spacing (Margin & Padding) */
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mt-1 { margin-top: 0.25rem; } .mt-4 { margin-top: 1rem; } .mt-6 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.25rem; } .mb-1\.5 { margin-bottom: 0.375rem; }
+        .mb-3 { margin-bottom: 0.75rem; } .mb-4 { margin-bottom: 1rem; } .mb-6 { margin-bottom: 1.5rem; }
+        .p-2 { padding: 0.5rem; } .p-3 { padding: 0.75rem; } .p-4 { padding: 1rem; }
+        .p-5 { padding: 1.25rem; } .p-6 { padding: 1.5rem; } .p-8 { padding: 2rem; } .p-10 { padding: 2.5rem; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; } .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; } .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; } .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; } .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; } .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+        .pb-6 { padding-bottom: 1.5rem; }
+        
+        /* Background Colors */
+        .bg-white { background-color: #ffffff; } .bg-transparent { background-color: transparent; }
+        .bg-slate-700 { background-color: #334155; } .bg-slate-800 { background-color: #1e293b; }
+        .bg-slate-900 { background-color: #0f172a; } .bg-slate-950 { background-color: #020617; }
+        .bg-indigo-500 { background-color: #6366f1; } .bg-indigo-600 { background-color: #4f46e5; }
+        .bg-slate-800\/50 { background-color: rgba(30, 41, 59, 0.5); }
+        .bg-slate-950\/50 { background-color: rgba(2, 6, 23, 0.5); }
+        .bg-slate-900\/90 { background-color: rgba(15, 23, 42, 0.9); }
+        .bg-indigo-900\/50 { background-color: rgba(49, 46, 129, 0.5); }
+        .bg-indigo-900\/20 { background-color: rgba(49, 46, 129, 0.2); }
+        .bg-indigo-500\/10 { background-color: rgba(99, 102, 241, 0.1); }
+        .bg-red-900\/20 { background-color: rgba(127, 29, 29, 0.2); }
+        .bg-amber-900\/20 { background-color: rgba(120, 53, 15, 0.2); }
+        
+        /* Typography */
+        .text-white { color: #ffffff; }
+        .text-slate-200 { color: #e2e8f0; } .text-slate-300 { color: #cbd5e1; }
+        .text-slate-400 { color: #94a3b8; } .text-slate-500 { color: #64748b; }
+        .text-indigo-300 { color: #a5b4fc; } .text-indigo-400 { color: #818cf8; }
+        .text-emerald-400 { color: #34d399; } .text-red-400 { color: #f87171; }
+        .text-amber-500 { color: #f59e0b; }
+        .font-mono { font-family: ui-monospace, monospace; }
+        .text-xs { font-size: 0.75rem; } .text-sm { font-size: 0.875rem; }
+        .text-lg { font-size: 1.125rem; } .text-xl { font-size: 1.25rem; }
+        .font-medium { font-weight: 500; } .font-semibold { font-weight: 600; } .font-bold { font-weight: 700; }
+        .tracking-tight { letter-spacing: -0.025em; } .tracking-wider { letter-spacing: 0.05em; }
+        .uppercase { text-transform: uppercase; } .text-center { text-align: center; }
+        .text-left { text-align: left; } .text-right { text-align: right; }
+        .leading-relaxed { line-height: 1.625; } .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .whitespace-pre-wrap { white-space: pre-wrap; }
+        .list-disc { list-style-type: disc; } .list-inside { list-style-position: inside; }
+        
+        /* Borders & Radius */
+        .rounded { border-radius: 0.25rem; } .rounded-lg { border-radius: 0.5rem; }
+        .rounded-xl { border-radius: 0.75rem; } .rounded-2xl { border-radius: 1rem; }
+        .rounded-3xl { border-radius: 1.5rem; } .rounded-full { border-radius: 9999px; }
+        .border { border-width: 1px; } .border-2 { border-width: 2px; }
+        .border-b { border-bottom-width: 1px; } .border-r { border-right-width: 1px; }
+        .border-dashed { border-style: dashed; }
+        .border-transparent { border-color: transparent; }
+        .border-slate-700 { border-color: #334155; } .border-slate-800 { border-color: #1e293b; }
+        .border-indigo-500 { border-color: #6366f1; }
+        .border-slate-700\/50 { border-color: rgba(51, 65, 85, 0.5); }
+        .border-amber-800\/50 { border-color: rgba(146, 64, 14, 0.5); }
+        .border-indigo-500\/20 { border-color: rgba(99, 102, 241, 0.2); }
+        
+        /* Effects & Shadows */
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .shadow-indigo-500\/30 { box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3); }
+        .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .opacity-0 { opacity: 0; }
+        
+        /* Positioning */
+        .absolute { position: absolute; } .relative { position: relative; }
+        .fixed { position: fixed; } .bottom-0 { bottom: 0; }
+        .left-0 { left: 0; } .right-0 { right: 0; }
+        .left-0\.5 { left: 0.125rem; } .top-0\.5 { top: 0.125rem; }
+        .z-40 { z-index: 40; } 
+        
+        /* Interactive States & Transitions */
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        .transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        .transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        .rotate-90 { transform: rotate(90deg); } .translate-x-4 { transform: translateX(1rem); }
+        
+        .hover\:text-indigo-400:hover { color: #818cf8; } .hover\:text-indigo-300:hover { color: #a5b4fc; }
+        .hover\:bg-slate-700:hover { background-color: #334155; } .hover\:bg-slate-800:hover { background-color: #1e293b; }
+        .hover\:bg-indigo-700:hover { background-color: #4338ca; }
+        .hover\:bg-red-900\/40:hover { background-color: rgba(127, 29, 29, 0.4); }
+        .hover\:bg-indigo-500\/20:hover { background-color: rgba(99, 102, 241, 0.2); }
+        .hover\:border-slate-600:hover { border-color: #475569; }
+        .hover\:scale-105:hover { transform: scale(1.05); } .active\:scale-95:active { transform: scale(.95); }
+        .scale-\[1\.02\] { transform: scale(1.02); }
+        
+        .focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
+        .focus\:border-indigo-500:focus { border-color: #6366f1; }
+        .focus\:ring-2:focus { --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color); --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
+        .focus\:ring-indigo-500:focus { --tw-ring-opacity: 1; --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity)); }
+        
+        .pointer-events-none { pointer-events: none; } .pointer-events-auto { pointer-events: auto; }
+        .cursor-pointer { cursor: pointer; } .select-none { user-select: none; }
+        .overflow-hidden { overflow: hidden; } .overflow-y-auto { overflow-y: auto; }
+        
+        /* Media Queries */
+        @media (min-width: 640px) { .sm\:block { display: block; } }
+        @media (min-width: 768px) { 
+            .md\:flex-row { flex-direction: row; } 
+            .md\:w-1\/3 { width: 33.333333%; } 
+            .md\:w-2\/3 { width: 66.666667%; } 
+            .md\:p-8 { padding: 2rem; } 
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 pb-24 font-sans selection:bg-indigo-500 selection:text-white" id="body">
-    <div id="app" v-cloak class="min-h-screen">
+<body>
+    <div class="min-h-screen">
+        <!-- ============================== HEADER ============================== -->
         <header class="px-8 py-6 flex items-center gap-3 max-w-7xl mx-auto">
             <div class="bg-indigo-600 p-2 rounded-xl shadow-lg shadow-indigo-500/30">
-                <icon name="mail" class-name="text-white w-6 h-6"></icon>
+                <div class="text-white w-6 h-6" id="icon-header-mail"></div>
             </div>
             <div>
                 <h1 class="text-xl font-bold tracking-tight">
@@ -28,12 +185,13 @@
                         Simple EML Creator
                     </a>
                 </h1>
-                <p class="text-xs text-slate-400 font-medium tracking-wide uppercase">Batch-create EML files from CSVs and templates!</p>
+                <p class="text-xs text-slate-400 font-medium tracking-wide uppercase">Batch-create EML files from CSV files and templates!</p>
             </div>
         </header>
 
         <main class="max-w-7xl mx-auto px-8 grid grid-cols-1 gap-8 mt-4">
-            <!-- STEP 1: Upload -->
+            
+            <!-- ============================== STEP 1: UPLOAD ============================== -->
             <section class="bg-slate-900 rounded-3xl p-8 shadow-sm border border-slate-800">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-lg font-semibold flex items-center gap-2">
@@ -41,31 +199,30 @@
                         Source Data
                     </h2>
                     <div class="flex gap-3">
-                        <button v-if="csvData.length > 0" @click="clearData" class="text-xs flex items-center gap-1.5 font-semibold bg-red-900/20 text-red-400 hover:bg-red-900/40 px-3 py-1.5 rounded-lg transition-colors">
+                        <button id="btn-clear-data" class="text-xs items-center gap-1.5 font-semibold bg-red-900/20 text-red-400 hover:bg-red-900/40 px-3 py-1.5 rounded-lg transition-colors hidden">
                             Clear Data
                         </button>
-                        <button @click="loadDemoStandard" class="text-xs flex items-center gap-1.5 font-semibold bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg transition-colors">
-                            <icon name="play" class-name="w-3.5 h-3.5"></icon> Demo Standard
+                        <button id="btn-demo-std" class="text-xs flex items-center gap-1.5 font-semibold bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg transition-colors">
+                            <div class="w-3.5 h-3.5" id="icon-play"></div> Demo Standard
                         </button>
-                        <button @click="loadDemoEmbedded" class="text-xs flex items-center gap-1.5 font-semibold bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg transition-colors">
-                            <icon name="fileJson" class-name="w-3.5 h-3.5"></icon> Demo Embedded
+                        <button id="btn-demo-emb" class="text-xs flex items-center gap-1.5 font-semibold bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg transition-colors">
+                            <div class="w-3.5 h-3.5" id="icon-file-json"></div> Demo Embedded
                         </button>
                     </div>
                 </div>
 
-                <details class="mb-6 bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm text-slate-300 group open:pb-4 transition-all">
-                    <summary class="p-4 font-semibold cursor-pointer select-none flex items-center justify-between list-none [&::-webkit-details-marker]:hidden">
+                <!-- Instructions Accordion -->
+                <details class="mb-6 bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm text-slate-300 transition-all">
+                    <summary class="p-4 font-semibold cursor-pointer select-none flex items-center justify-between list-none">
                         <span>☰ CSV Format Instructions</span>
-                        <span class="transition-transform group-open:rotate-180">
-                            <icon name="chevronRight" class-name="w-4 h-4 rotate-90"></icon>
-                        </span>
+                        <span class="transition-transform"><div class="w-4 h-4 rotate-90" id="icon-chevron-right"></div></span>
                     </summary>
-                    <div class="px-4 text-slate-300">
+                    <div class="px-4 text-slate-300 pb-4">
                         <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li></strong> Save CSV files as "<code>CSV (Comma delimited) (*.csv)</code>" in Microsoft Excel.</li>
+                            <li>Save CSV files as "<code>CSV (Comma delimited) (*.csv)</code>" in Microsoft Excel.</li>
                             <li>File must contain a column for emails (e.g., "<code>To</code>", "<code>CC</code>" (Optional), "<code>BCC</code>" (Optional)).</li>
                             <li>Multiple emails can be separated by semicolon ("<code>;</code>").</li>
-                            <li>First row can optionally contain "<code>Subject</code>" and "<code>Body</code>" (column headers) to embed the template (do not use "<code>\n</code>" for newlines in CSV, use <b><code>ALT+ENTER</code></b>).</li>
+                            <li>First row can optionally contain "<code>Subject</code>" and "<code>Body</code>" (headers) to embed the template (do not use "<code>\n</code>" for newlines in CSV, use <b><code>ALT+ENTER</code></b>).</li>
                             <li>All other columns act as variables (e.g., "<code>Role</code>" becomes "<code>&lt;&lt;Role&gt;&gt;</code>").</li>
                         </ul>
                         Example:
@@ -75,161 +232,114 @@
                     </div>
                 </details>
 
-                <div 
-                    @dragover.prevent="isDragging = true"
-                    @dragleave.prevent="isDragging = false"
-                    @drop.prevent="handleDrop"
-                    :class="['border-2 border-dashed rounded-2xl p-10 text-center transition-all', isDragging ? 'border-indigo-500 bg-indigo-900/20' : 'border-slate-700 hover:border-slate-600']"
-                >
-                    <input type="file" accept=".csv" class="hidden" ref="fileInputRef" @change="handleFileUpload" />
-                    <icon name="upload" :class-name="['w-12 h-12 mx-auto mb-4', isDragging ? 'text-indigo-500' : 'text-slate-400']"></icon>
+                <!-- Drag & Drop Zone -->
+                <div id="upload-zone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-2xl p-10 text-center transition-all cursor-pointer">
+                    <input type="file" accept=".csv" class="hidden" id="file-input" />
+                    <div id="icon-upload" class="w-12 h-12 mx-auto mb-4 text-slate-400"></div>
                     
-                    <div v-if="csvFilename">
+                    <div id="upload-ui-loaded" class="hidden">
                         <p class="text-lg font-semibold text-emerald-400 flex items-center justify-center gap-2">
-                            <icon name="check" class-name="w-5 h-5"></icon> {{ csvFilename }} Loaded
+                            <span id="icon-check" class="w-5 h-5"></span> <span id="lbl-filename">Loaded</span>
                         </p>
-                        <p class="text-sm text-slate-400 mt-1">{{ csvData.length }} total rows parsed</p>
+                        <p class="text-sm text-slate-400 mt-1"><span id="lbl-row-count">0</span> total rows parsed</p>
                     </div>
-                    <div v-else>
+                    
+                    <div id="upload-ui-empty">
                         <p class="text-slate-400 font-medium">Drag & drop your recipient CSV here</p>
-                        <button @click="$refs.fileInputRef.click()" class="mt-4 px-6 py-2 bg-slate-800 border border-slate-700 rounded-xl font-medium shadow-sm hover:shadow-md transition-all text-sm">
+                        <button class="mt-4 px-6 py-2 bg-slate-800 border border-slate-700 rounded-xl font-medium shadow-sm hover:border-slate-600 transition-all text-sm pointer-events-none">
                             Upload CSV File
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- STEP 2: Template Configuration -->
-            <section v-if="csvData.length > 0" class="bg-slate-900 rounded-3xl p-8 shadow-sm border border-slate-800">
+            <!-- ============================== STEP 2: TEMPLATE ============================== -->
+            <section id="step2-section" class="bg-slate-900 rounded-3xl p-8 shadow-sm border border-slate-800 hidden">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-lg font-semibold flex items-center gap-2">
                         <span class="bg-indigo-900/50 text-indigo-400 w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold">2</span>
                         Template Configuration
                     </h2>
-                    <label v-if="hasEmbeddedTemplate" class="flex items-center gap-2 text-sm font-medium bg-amber-900/20 text-amber-500 px-4 py-2 rounded-xl border border-amber-800/50 cursor-pointer">
-                        <input type="checkbox" v-model="skipTemplateRow" class="rounded" />
+                    <label id="skip-template-wrapper" class="hidden items-center gap-2 text-sm font-medium bg-amber-900/20 text-amber-500 px-4 py-2 rounded-xl border border-amber-800/50 cursor-pointer">
+                        <input type="checkbox" id="chk-skip-template" class="rounded" />
                         Skip CSV Row 2 (Template Detected)
                     </label>
                 </div>
 
                 <div class="mb-6">
                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Available Variables (Click to inject)</p>
-                    <div class="flex flex-wrap gap-2">
-                        <button 
-                            v-for="(h, i) in headers" :key="i"
-                            @click="insertVariable(h)"
-                            class="font-mono text-xs px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/20 transition-colors"
-                        >
-                            {{ h }}
-                        </button>
-                    </div>
+                    <div id="vars-container" class="flex flex-wrap gap-2"></div>
                 </div>
 
                 <div class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium mb-1.5">Subject Line</label>
-                        <input 
-                            type="text"
-                            ref="subjectRef"
-                            v-model="subjectTemplate"
-                            @focus="lastFocused = 'subject'"
-                            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
-                            placeholder="e.g. Action Required: <<Project>>"
-                        />
+                        <input type="text" id="input-subject" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium" placeholder="e.g. Action Required: <<Project>>" />
                     </div>
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
                             <label class="block text-sm font-medium">Email Body</label>
                             <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer select-none">
-                                <span :class="!isHtml ? 'text-indigo-400' : 'text-slate-400'">Plain Text</span>
+                                <span id="lbl-plain" class="text-indigo-400">Plain Text</span>
                                 <div class="relative inline-block w-8 h-4 bg-slate-700 rounded-full transition-colors">
-                                    <input type="checkbox" class="opacity-0 w-0 h-0" v-model="isHtml" />
-                                    <span :class="['absolute left-0.5 top-0.5 w-3 h-3 bg-white rounded-full transition-transform', isHtml ? 'translate-x-4 bg-indigo-500' : '']"></span>
+                                    <input type="checkbox" id="chk-is-html" class="opacity-0 w-0 h-0" />
+                                    <span id="toggle-circle" class="absolute left-0.5 top-0.5 w-3 h-3 bg-white rounded-full transition-transform"></span>
                                 </div>
-                                <span :class="isHtml ? 'text-indigo-400' : 'text-slate-400'">HTML</span>
+                                <span id="lbl-html" class="text-slate-400">HTML</span>
                             </label>
                         </div>
-                        <textarea 
-                            ref="bodyRef"
-                            v-model="bodyTemplate"
-                            @focus="lastFocused = 'body'"
-                            rows="8"
-                            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 custom-scrollbar font-mono text-sm leading-relaxed"
-                            placeholder="Dear <<Name>>,\n\n..."
-                        ></textarea>
+                        <textarea id="input-body" rows="8" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 custom-scrollbar font-mono text-sm leading-relaxed" placeholder="Dear <<Name>>,\n\n..."></textarea>
                     </div>
                 </div>
             </section>
 
-            <!-- STEP 3: Preview & Output -->
-            <section v-if="validRecords.length > 0" class="bg-slate-900 rounded-3xl shadow-sm border border-slate-800 overflow-hidden flex flex-col md:flex-row">
-                <div class="w-full md:w-1/3 border-r border-slate-800 bg-slate-950/50 flex flex-col h-[600px]">
+            <!-- ============================== STEP 3: PREVIEW ============================== -->
+            <section id="step3-section" class="bg-slate-900 rounded-3xl shadow-sm border border-slate-800 overflow-hidden flex-col md:flex-row hidden">
+                <!-- Left Sidebar: Records list -->
+                <div class="w-full md:w-1/3 border-b md:border-b-0 md:border-r border-slate-800 bg-slate-950/50 flex flex-col h-[600px]">
                     <div class="p-5 border-b border-slate-800">
                         <h2 class="text-lg font-semibold flex items-center gap-2">
                             <span class="bg-indigo-900/50 text-indigo-400 w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold">3</span>
                             Live Preview
                         </h2>
-                        <p class="text-xs text-slate-500 mt-1">{{ validRecords.length }} Drafts Ready</p>
+                        <p class="text-xs text-slate-500 mt-1"><span id="lbl-drafts-count">0</span> Drafts Ready</p>
                     </div>
-                    <div class="overflow-y-auto custom-scrollbar flex-1 p-3 space-y-2">
-                        <button 
-                            v-for="(r, i) in validRecords" :key="i"
-                            @click="selectedRecordIndex = i"
-                            :class="['w-full text-left p-4 rounded-xl border transition-all', selectedRecordIndex === i ? 'bg-slate-800 border-indigo-500 shadow-md scale-[1.02]' : 'bg-transparent border-transparent hover:bg-slate-800']"
-                        >
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="text-xs font-bold text-slate-400">Row {{ skipTemplateRow ? i + 2 : i + 1 }}</span>
-                                <icon name="chevronRight" :class-name="['w-4 h-4', selectedRecordIndex === i ? 'text-indigo-500' : 'text-slate-500']"></icon>
-                            </div>
-                            <div class="font-medium text-sm truncate">{{ r[emailMap.to] || '(No To Address)' }}</div>
-                        </button>
-                    </div>
+                    <div id="records-list" class="overflow-y-auto custom-scrollbar flex-1 p-3 space-y-2"></div>
                 </div>
 
+                <!-- Right Pane: Live Email Preview -->
                 <div class="w-full md:w-2/3 p-6 md:p-8 flex flex-col h-[600px] bg-slate-900">
-                    <div v-if="activeRecord" class="flex flex-col h-full">
+                    <div class="flex flex-col h-full">
                         <div class="space-y-4 flex-none border-b border-slate-800 pb-6 mb-6">
                             <div class="flex gap-4 items-center">
                                 <span class="w-12 text-sm font-medium text-slate-400 text-right">To:</span>
-                                <div class="flex-1 flex flex-wrap gap-2">
-                                    <span v-for="(em, idx) in formatEmailsArray(activeRecord[emailMap.to])" :key="idx" class="bg-slate-800 text-slate-200 px-3 py-1 rounded-full text-sm font-medium border border-slate-700">
-                                        {{ em }}
-                                    </span>
-                                </div>
+                                <div id="preview-to" class="flex-1 flex flex-wrap gap-2"></div>
                             </div>
-                            <div v-if="emailMap.cc && activeRecord[emailMap.cc]" class="flex gap-4 items-center">
+                            <div id="preview-cc-wrap" class="flex gap-4 items-center hidden">
                                 <span class="w-12 text-sm font-medium text-slate-400 text-right">Cc:</span>
-                                <div class="flex-1 flex flex-wrap gap-2">
-                                    <span v-for="(em, idx) in formatEmailsArray(activeRecord[emailMap.cc])" :key="'cc-'+idx" class="bg-slate-800 text-slate-200 px-3 py-1 rounded-full text-sm font-medium border border-slate-700">
-                                        {{ em }}
-                                    </span>
-                                </div>
+                                <div id="preview-cc" class="flex-1 flex flex-wrap gap-2"></div>
                             </div>
-                            <div v-if="emailMap.bcc && activeRecord[emailMap.bcc]" class="flex gap-4 items-center">
+                            <div id="preview-bcc-wrap" class="flex gap-4 items-center hidden">
                                 <span class="w-12 text-sm font-medium text-slate-400 text-right">Bcc:</span>
-                                <div class="flex-1 flex flex-wrap gap-2">
-                                    <span v-for="(em, idx) in formatEmailsArray(activeRecord[emailMap.bcc])" :key="'bcc-'+idx" class="bg-slate-800 text-slate-200 px-3 py-1 rounded-full text-sm font-medium border border-slate-700">
-                                        {{ em }}
-                                    </span>
-                                </div>
+                                <div id="preview-bcc" class="flex-1 flex flex-wrap gap-2"></div>
                             </div>
                             <div class="flex gap-4 items-center">
                                 <span class="w-12 text-sm font-medium text-slate-400 text-right">Subj:</span>
-                                <div class="flex-1 font-semibold text-lg">{{ previewSubject }}</div>
+                                <div id="preview-subj" class="flex-1 font-semibold text-lg"></div>
                             </div>
                         </div>
                         
                         <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-950 p-6 rounded-2xl border border-slate-800 relative">
-                            <div v-if="isHtml" v-html="previewBody" class="prose prose-invert max-w-none text-sm"></div>
-                            <pre v-else class="font-mono text-sm whitespace-pre-wrap leading-relaxed">{{ previewBody }}</pre>
+                            <div id="preview-body-html" class="text-sm hidden"></div>
+                            <pre id="preview-body-text" class="font-mono text-sm whitespace-pre-wrap leading-relaxed"></pre>
                         </div>
 
                         <div class="flex gap-3 mt-6 flex-none justify-end">
-                            <button @click="handleCopyBody" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 transition-colors">
-                                <icon name="copy" class-name="w-4 h-4"></icon> Copy Body
+                            <button id="btn-copy-body" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 transition-colors">
+                                <div class="w-4 h-4" id="icon-copy"></div> Copy Body
                             </button>
-                            <button @click="handleDownloadSingle" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 transition-colors">
-                                <icon name="fileText" class-name="w-4 h-4"></icon> Download .eml
+                            <button id="btn-dl-single" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 transition-colors">
+                                <div class="w-4 h-4" id="icon-file-text"></div> Download .eml
                             </button>
                         </div>
                     </div>
@@ -237,173 +347,457 @@
             </section>
         </main>
 
-        <!-- ADD THIS NEW FOOTER BLOCK -->
         <footer class="max-w-7xl mx-auto px-8 py-10 text-center text-sm text-slate-500">
-            <p>
-                <a href="https://github.com/atet/eml" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 transition-colors">v0.9</a>
-            </p>
+            <p><a href="https://github.com/atet/eml" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 transition-colors">v0.99</a></p>
         </footer>
-        <!-- END NEW FOOTER BLOCK -->
 
-        <div v-if="validRecords.length > 0" class="fixed bottom-0 left-0 right-0 p-4 pointer-events-none z-40">
+        <!-- ============================== BOTTOM ACTION BAR ============================== -->
+        <div id="footer-action" class="fixed bottom-0 left-0 right-0 p-4 pointer-events-none z-40 hidden">
             <div class="max-w-4xl mx-auto bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-slate-700/50 flex items-center justify-between pointer-events-auto">
                 <div class="flex items-center gap-4">
                     <div class="hidden sm:block">
                         <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">ZIP Filename</p>
-                        <input type="text" v-model="zipFilename" class="bg-transparent border-b border-slate-700 focus:border-indigo-500 outline-none text-sm font-mono w-64" />
+                        <input type="text" id="input-zipname" class="bg-transparent border-b border-slate-700 focus:border-indigo-500 outline-none text-sm font-mono w-64" />
                     </div>
                 </div>
-                <button @click="handleBuildZip" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95">
-                    <icon name="download" class-name="w-5 h-5"></icon> Pack {{ validRecords.length }} Drafts
+                <button id="btn-dl-zip" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95">
+                    <div class="w-5 h-5" id="icon-download"></div> Pack <span id="lbl-pack-count">0</span> Drafts
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- ==========================================================================
+         APPLICATION LOGIC
+         ========================================================================== -->
     <script>
-        const iconPaths = {
-            mail: `<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>`,
-            upload: `<path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/>`,
-            check: `<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>`,
-            play: `<polygon points="6 3 20 12 6 21 6 3"/>`,
-            fileJson: `<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1"/><path d="M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"/>`,
-            chevronRight: `<path d="m9 18 6-6-6-6"/>`,
-            copy: `<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>`,
-            fileText: `<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>`,
-            download: `<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>`,
-            info: `<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>`,
-            settings: `<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>`
-        };
+        const EmlApp = (() => {
 
-        const app = Vue.createApp({
-            data() {
-                return {
-                    csvData: [], headers: [], csvFilename: '', subjectTemplate: '', bodyTemplate: '',
-                    isHtml: false, skipTemplateRow: false, hasEmbeddedTemplate: false,
-                    selectedRecordIndex: 0, lastFocused: 'subject', zipFilename: 'drafts.zip',
-                    showDrawer: false, isDragging: false
+            // --- 1. ICONS ---
+            const ICONS = {
+                mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,
+                upload: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>`,
+                check: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
+                play: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>`,
+                fileJson: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1"/><path d="M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"/></svg>`,
+                chevronRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`,
+                copy: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`,
+                fileText: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>`,
+                download: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>`
+            };
+
+            // --- 2. VANILLA CSV PARSER ---
+            const parseCSV = (text) => {
+                let prevChar = '', row = [''], result = [row], colIdx = 0, rowIdx = 0, inQuotes = false, char;
+                for (char of text) {
+                    if ('"' === char) {
+                        if (inQuotes && char === prevChar) row[row.length - 1] += char; // Handle escaped quotes ""
+                        inQuotes = !inQuotes;
+                    } else if (',' === char && !inQuotes) {
+                        char = row[++colIdx] = ''; // Advance to next cell
+                    } else if ('\n' === char && !inQuotes) {
+                        if ('\r' === prevChar) row[colIdx] = row[colIdx].slice(0, -1); // Handle \r\n
+                        row = result[++rowIdx] = [char = '']; colIdx = 0; // Advance to next row
+                    } else {
+                        row[colIdx] += char;
+                    }
+                    prevChar = char;
                 }
-            },
-            computed: {
-                validRecords() { return this.skipTemplateRow ? this.csvData.slice(1) : this.csvData; },
-                activeRecord() { return this.validRecords[this.selectedRecordIndex] || null; },
-                emailMap() {
-                    const map = { to: null, cc: null, bcc: null };
-                    this.headers.forEach(h => {
-                        if (!map.to && /to|recipient|mailto|email/i.test(h)) map.to = h;
-                        else if (!map.cc && /^(cc|carbon copy)$/i.test(h)) map.cc = h;
-                        else if (!map.bcc && /^(bcc|blind carbon copy)$/i.test(h)) map.bcc = h;
-                    });
-                    return map;
-                },
-                previewSubject() { return this.replaceVariables(this.subjectTemplate, this.activeRecord); },
-                previewBody() { return this.replaceVariables(this.bodyTemplate, this.activeRecord); }
-            },
-            methods: {
-                clearData() {
-                    this.csvData = []; this.headers = []; this.csvFilename = ''; this.subjectTemplate = ''; this.bodyTemplate = '';
-                },
-                formatEmailsArray(str) { return str ? str.split(/[,;| \t]+/).filter(p => p.trim()) : []; },
-                formatEmails(str) { return this.formatEmailsArray(str).join(', '); },
-                replaceVariables(text, record) { return text?.replace(/<<([^>]+)>>/g, (m, k) => record?.[k] ?? m) || ''; },
-                encodeUtf8Base64(str) { return btoa(String.fromCharCode(...new TextEncoder().encode(str))); },
-                generateEML(record, subj, body) {
-                    let eml = `X-Unsent: 1\r\n`;
-                    const map = this.emailMap;
-                    if (map.to && record[map.to]) eml += `To: ${this.formatEmails(record[map.to])}\r\n`;
-                    if (map.cc && record[map.cc]) eml += `Cc: ${this.formatEmails(record[map.cc])}\r\n`;
-                    if (map.bcc && record[map.bcc]) eml += `Bcc: ${this.formatEmails(record[map.bcc])}\r\n`;
-                    eml += `Subject: =?utf-8?B?${this.encodeUtf8Base64(subj)}?=\r\nMIME-Version: 1.0\r\nContent-Type: ${this.isHtml ? 'text/html' : 'text/plain'}; charset=utf-8\r\nContent-Transfer-Encoding: 8bit\r\n\r\n${body}`;
-                    return eml;
-                },
-                processCSV(fileOrString, filename) {
-                    Papa.parse(fileOrString, {
-                        header: true, skipEmptyLines: true,
-                        complete: (res) => {
-                            if (!res.data.length) return;
-                            this.headers = res.meta.fields || Object.keys(res.data[0]);
-                            this.csvData = res.data;
-                            this.csvFilename = filename;
-                            this.zipFilename = `${filename.replace(/\.[^/.]+$/, "")}_eml_drafts_${new Date().toISOString().replace(/[:.]/g, '-').slice(0,16)}.zip`;
-                            
-                            const getKey = name => this.headers.find(h => h.toLowerCase() === name);
-                            const sKey = getKey('subject'), bKey = getKey('body');
-                            
-                            if (sKey && bKey && (res.data[0][sKey] || res.data[0][bKey])) {
-                                this.subjectTemplate = res.data[0][sKey] || ''; this.bodyTemplate = res.data[0][bKey] || '';
-                                this.hasEmbeddedTemplate = true; this.skipTemplateRow = true;
-                            } else {
-                                this.hasEmbeddedTemplate = false; this.skipTemplateRow = false;
-                            }
-                            this.selectedRecordIndex = 0;
-                        }
-                    });
-                },
-                handleFileUpload(e) {
-                    if (e.target.files[0]) this.processCSV(e.target.files[0], e.target.files[0].name);
-                    this.$refs.fileInputRef.value = '';
-                },
-                handleDrop(e) {
-                    this.isDragging = false;
-                    if (e.dataTransfer.files[0]) this.processCSV(e.dataTransfer.files[0], e.dataTransfer.files[0].name);
-                },
-                loadDemoStandard() {
-                    const csvStr = `To,CC,BCC,Name,Department\nalice@example.com;jill@example.com,supervisors@demo.com;managers@demo.com,noreply@demo.com,Alice and Jill,Engineering\nbob@example.com;bill@example.com,supervisors@demo.com;managers@demo.com,noreply@demo.com,Bob and Bill,Marketing`;
-                    this.processCSV(csvStr, "Demo_Standard.csv");
-                    setTimeout(() => {
-                        this.subjectTemplate = "Quarterly Update for <<Department>>";
-                        this.bodyTemplate = "Hi <<Name>>,\n\nHere are the updates for the <<Department>> team.\n\nBest,\nManagement";
-                        this.hasEmbeddedTemplate = false; this.skipTemplateRow = false;
-                    }, 50);
-                },
-loadDemoEmbedded() {
-                    const csvStr = `Subject,Body,To,CC,BCC,Name,Role\n"Let's Welcome <<Name>>, our new <<Role>>!","Hello Company,\n\nWe'd like to introduce our new <<Role>>, <<Name>>!\n\nCheers,\nThe Company","","","",""\n"","",broadcast@demo.com,charlie@demo.com;chad@demo.com;supervisors@demo.com;managers@demo.com,noreply@demo.com,Charlie and Chad,Managers\n"","",broadcast@demo.com,dave@demo.com;don@demo.com;supervisors@demo.com;managers@demo.com,noreply@demo.com,Dave and Don,Analysts`;
-                    this.processCSV(csvStr, "Demo_Embedded.csv");
-                },
-                insertVariable(header) {
-                    const refEl = this.lastFocused === 'subject' ? this.$refs.subjectRef : this.$refs.bodyRef;
-                    if (!refEl) return;
-                    const start = refEl.selectionStart, end = refEl.selectionEnd, val = refEl.value, ins = `<<${header}>>`;
-                    const newVal = val.substring(0, start) + ins + val.substring(end);
-                    if (this.lastFocused === 'subject') this.subjectTemplate = newVal; else this.bodyTemplate = newVal;
-                    this.$nextTick(() => { refEl.focus(); refEl.setSelectionRange(start + ins.length, start + ins.length); });
-                },
-                handleCopyBody() {
-                    if (this.activeRecord) navigator.clipboard.writeText(this.previewBody);
-                },
-                handleDownloadSingle() {
-                    if (!this.activeRecord) return;
-                    
-                    const pad = String(this.validRecords.length).length > 2 ? String(this.validRecords.length).length : 3;
-                    const prefix = String(this.selectedRecordIndex + 1).padStart(pad, '0');
-                    const sanitizedSubject = this.previewSubject.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50) || 'Draft';
-                    const filename = `${prefix}_${sanitizedSubject}.eml`;
+                
+                if (!result[0].length || (result.length === 1 && result[0][0] === '')) return { data: [], fields: [] };
+                
+                const rows = result.filter(r => r.join('').trim() !== '');
+                const fields = rows[0].map(f => f.trim());
+                const data = rows.slice(1).map(r => {
+                    const obj = {}; fields.forEach((f, idx) => obj[f] = r[idx] || ''); return obj;
+                });
+                return { fields, data };
+            };
 
-                    const url = URL.createObjectURL(new Blob([this.generateEML(this.activeRecord, this.previewSubject, this.previewBody)], { type: 'message/rfc822' }));
-                    const a = Object.assign(document.createElement('a'), { href: url, download: filename });
-                    a.click(); URL.revokeObjectURL(url);
-                },
-                async handleBuildZip() {
-                    const zip = new JSZip();
-                    const pad = String(this.validRecords.length).length > 2 ? String(this.validRecords.length).length : 3;
-                    this.validRecords.forEach((record, i) => {
-                        const rSubj = this.replaceVariables(this.subjectTemplate, record), rBody = this.replaceVariables(this.bodyTemplate, record);
-                        zip.file(`${String(i + 1).padStart(pad, '0')}_${rSubj.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50) || 'Draft'}.eml`, this.generateEML(record, rSubj, rBody));
-                    });
-                    const url = URL.createObjectURL(await zip.generateAsync({ type: 'blob' }));
-                    const a = Object.assign(document.createElement('a'), { href: url, download: this.zipFilename || 'drafts.zip' });
-                    a.click(); URL.revokeObjectURL(url);
+            // --- 3. VANILLA ZIP BUILDER (Uncompressed Store Mode) ---
+            class ZipWriter {
+                constructor() { this.files = []; }
+                
+                addFile(name, content) {
+                    const utf8Data = new TextEncoder().encode(content);
+                    this.files.push({ name: new TextEncoder().encode(name), data: utf8Data });
+                }
+                
+                crc32(data) {
+                    let crc = 0xFFFFFFFF;
+                    for (let i = 0; i < data.length; i++) {
+                        crc ^= data[i];
+                        for (let j = 0; j < 8; j++) crc = (crc & 1) ? (crc >>> 1) ^ 0xEDB88320 : (crc >>> 1);
+                    }
+                    return (crc ^ 0xFFFFFFFF) >>> 0;
+                }
+                
+                build() {
+                    let offset = 0, centralDirSize = 0;
+                    const localHeaders = [], centralHeaders = [];
+                    
+                    for (const file of this.files) {
+                        const crc = this.crc32(file.data);
+                        const nameLen = file.name.length;
+                        const size = file.data.length;
+                        
+                        // Local File Header
+                        const lh = new Uint8Array(30 + nameLen + size);
+                        const dvL = new DataView(lh.buffer);
+                        dvL.setUint32(0, 0x04034b50, true); dvL.setUint16(4, 10, true); dvL.setUint16(6, 2048, true);
+                        dvL.setUint16(8, 0, true); dvL.setUint16(10, 0, true); dvL.setUint16(12, 0, true);
+                        dvL.setUint32(14, crc, true); dvL.setUint32(18, size, true); dvL.setUint32(22, size, true);
+                        dvL.setUint16(26, nameLen, true); dvL.setUint16(28, 0, true);
+                        lh.set(file.name, 30); lh.set(file.data, 30 + nameLen); localHeaders.push(lh);
+                        
+                        // Central Directory Header
+                        const ch = new Uint8Array(46 + nameLen);
+                        const dvC = new DataView(ch.buffer);
+                        dvC.setUint32(0, 0x02014b50, true); dvC.setUint16(4, 10, true); dvC.setUint16(6, 10, true);
+                        dvC.setUint16(8, 2048, true); dvC.setUint16(10, 0, true); dvC.setUint16(12, 0, true);
+                        dvC.setUint16(14, 0, true); dvC.setUint32(16, crc, true); dvC.setUint32(20, size, true);
+                        dvC.setUint32(24, size, true); dvC.setUint16(28, nameLen, true); dvC.setUint16(30, 0, true);
+                        dvC.setUint16(32, 0, true); dvC.setUint16(34, 0, true); dvC.setUint16(36, 0, true);
+                        dvC.setUint32(38, 0, true); dvC.setUint32(42, offset, true);
+                        ch.set(file.name, 46); centralHeaders.push(ch);
+                        
+                        offset += lh.length; 
+                        centralDirSize += ch.length;
+                    }
+                    
+                    // End of Central Directory (EOCD)
+                    const eocd = new Uint8Array(22);
+                    const dvE = new DataView(eocd.buffer);
+                    dvE.setUint32(0, 0x06054b50, true); dvE.setUint16(4, 0, true); dvE.setUint16(6, 0, true);
+                    dvE.setUint16(8, this.files.length, true); dvE.setUint16(10, this.files.length, true);
+                    dvE.setUint32(12, centralDirSize, true); dvE.setUint32(16, offset, true); dvE.setUint16(20, 0, true);
+                    
+                    // Combine all into output blob
+                    const out = new Uint8Array(offset + centralDirSize + 22);
+                    let pointer = 0;
+                    for (const h of localHeaders) { out.set(h, pointer); pointer += h.length; }
+                    for (const h of centralHeaders) { out.set(h, pointer); pointer += h.length; }
+                    out.set(eocd, pointer);
+                    
+                    return new Blob([out], { type: "application/zip" });
                 }
             }
-        });
 
-        app.component('icon', {
-            props: ['name', 'className'],
-            template: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="className" v-html="path"></svg>`,
-            computed: { path() { return iconPaths[this.name]; } }
-        });
+            // --- 4. STATE & CACHED DOM ---
+            const state = {
+                csvData: [], headers: [], csvFilename: '', subjectTemplate: '', bodyTemplate: '',
+                isHtml: false, skipTemplateRow: false, hasEmbeddedTemplate: false,
+                selectedRecordIndex: 0, lastFocused: 'subject', zipFilename: 'drafts.zip'
+            };
 
-        app.mount('#app');
+            const ui = {}; // Populated in init()
+
+            // --- 5. UTILITIES ---
+            const $ = id => document.getElementById(id);
+            const getEmailMap = () => {
+                const map = { to: null, cc: null, bcc: null };
+                state.headers.forEach(h => {
+                    if (!map.to && /to|recipient|mailto|email/i.test(h)) map.to = h;
+                    else if (!map.cc && /^(cc|carbon copy)$/i.test(h)) map.cc = h;
+                    else if (!map.bcc && /^(bcc|blind carbon copy)$/i.test(h)) map.bcc = h;
+                });
+                return map;
+            };
+            const formatEmailsArray = str => str ? str.split(/[,;| \t]+/).filter(p => p.trim()) : [];
+            const formatEmails = str => formatEmailsArray(str).join(', ');
+            const replaceVars = (text, record) => text?.replace(/<<([^>]+)>>/g, (m, k) => record?.[k] ?? m) || '';
+            const encodeUtf8B64 = str => btoa(String.fromCharCode(...new TextEncoder().encode(str)));
+
+            const generateEML = (record, subj, body) => {
+                let eml = `X-Unsent: 1\r\n`;
+                const map = getEmailMap();
+                if (map.to && record[map.to]) eml += `To: ${formatEmails(record[map.to])}\r\n`;
+                if (map.cc && record[map.cc]) eml += `Cc: ${formatEmails(record[map.cc])}\r\n`;
+                if (map.bcc && record[map.bcc]) eml += `Bcc: ${formatEmails(record[map.bcc])}\r\n`;
+                eml += `Subject: =?utf-8?B?${encodeUtf8B64(subj)}?=\r\nMIME-Version: 1.0\r\nContent-Type: ${state.isHtml ? 'text/html' : 'text/plain'}; charset=utf-8\r\nContent-Transfer-Encoding: 8bit\r\n\r\n${body}`;
+                return eml;
+            };
+
+            // --- 6. RENDERERS ---
+            const renderVisibility = (hasData, hasValid) => {
+                ui.btnClear.style.display = hasData ? 'flex' : 'none';
+                ui.uploadEmpty.style.display = hasData ? 'none' : 'block';
+                ui.uploadLoaded.style.display = hasData ? 'block' : 'none';
+                ui.sectionStep2.style.display = hasData ? 'block' : 'none';
+                ui.sectionStep3.style.display = hasValid ? 'flex' : 'none';
+                ui.sectionFooter.style.display = hasValid ? 'block' : 'none';
+                ui.skipWrapper.style.display = state.hasEmbeddedTemplate ? 'flex' : 'none';
+            };
+
+            const renderMetadata = (hasData, hasValid, validRecords) => {
+                if (hasData) {
+                    ui.lblFilename.innerText = `${state.csvFilename} Loaded`;
+                    ui.lblRowCount.innerText = state.csvData.length;
+                }
+                if (hasValid) {
+                    ui.lblDraftsCount.innerText = validRecords.length;
+                    ui.lblPackCount.innerText = validRecords.length;
+                }
+            };
+
+            const renderVariables = () => {
+                ui.varsContainer.innerHTML = state.headers.map(h => 
+                    `<button class="font-mono text-xs px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/20 transition-colors" data-var="${h}">${h}</button>`
+                ).join('');
+                
+                document.querySelectorAll('#vars-container button').forEach(b => 
+                    b.addEventListener('click', () => insertVariable(b.dataset.var))
+                );
+            };
+
+            const renderRecordsList = (validRecords, emailMap) => {
+                ui.recordsList.innerHTML = validRecords.map((rec, i) => `
+                    <button class="w-full text-left p-4 rounded-xl border transition-all ${state.selectedRecordIndex === i ? 'active-record-btn' : 'border-transparent hover:bg-slate-800'}" data-index="${i}">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold text-slate-400">Row ${state.skipTemplateRow ? i + 2 : i + 1}</span>
+                            <div class="w-4 h-4 ${state.selectedRecordIndex === i ? 'text-indigo-500' : 'text-slate-500'}">${ICONS.chevronRight}</div>
+                        </div>
+                        <div class="font-medium text-sm truncate">${rec[emailMap.to] || '(No To Address)'}</div>
+                    </button>
+                `).join('');
+                
+                document.querySelectorAll('#records-list button').forEach(b => b.addEventListener('click', () => {
+                    state.selectedRecordIndex = parseInt(b.dataset.index); 
+                    updateUI();
+                }));
+            };
+
+            const renderFormState = () => {
+                if (ui.inpSubject.value !== state.subjectTemplate) ui.inpSubject.value = state.subjectTemplate;
+                if (ui.inpBody.value !== state.bodyTemplate) ui.inpBody.value = state.bodyTemplate;
+                if (ui.inpZipname.value !== state.zipFilename) ui.inpZipname.value = state.zipFilename;
+                
+                ui.chkSkip.checked = state.skipTemplateRow;
+                ui.chkHtml.checked = state.isHtml;
+
+                ui.toggleCircle.className = `absolute top-0.5 w-3 h-3 bg-white rounded-full transition-transform ${state.isHtml ? 'translate-x-4 bg-indigo-500' : 'left-0.5'}`;
+                ui.lblPlain.className = !state.isHtml ? 'text-indigo-400' : 'text-slate-400';
+                ui.lblHtml.className = state.isHtml ? 'text-indigo-400' : 'text-slate-400';
+            };
+
+            const renderPreview = (activeRecord, emailMap) => {
+                if (!activeRecord) return;
+                
+                const previewSubj = replaceVars(state.subjectTemplate, activeRecord);
+                const previewBody = replaceVars(state.bodyTemplate, activeRecord);
+                
+                ui.previewSubj.innerText = previewSubj;
+                
+                if (state.isHtml) {
+                    ui.previewBodyHtml.innerHTML = previewBody;
+                    ui.previewBodyHtml.style.display = 'block';
+                    ui.previewBodyText.style.display = 'none';
+                } else {
+                    ui.previewBodyText.innerText = previewBody;
+                    ui.previewBodyHtml.style.display = 'none';
+                    ui.previewBodyText.style.display = 'block';
+                }
+
+                const buildChips = (str) => formatEmailsArray(str).map(em => `<span class="bg-slate-800 text-slate-200 px-3 py-1 rounded-full text-sm font-medium border border-slate-700">${em}</span>`).join('');
+                
+                ui.previewTo.innerHTML = buildChips(activeRecord[emailMap.to]);
+                
+                if (emailMap.cc && activeRecord[emailMap.cc]) {
+                    ui.previewCcWrap.style.display = 'flex';
+                    ui.previewCc.innerHTML = buildChips(activeRecord[emailMap.cc]);
+                } else ui.previewCcWrap.style.display = 'none';
+                
+                if (emailMap.bcc && activeRecord[emailMap.bcc]) {
+                    ui.previewBccWrap.style.display = 'flex';
+                    ui.previewBcc.innerHTML = buildChips(activeRecord[emailMap.bcc]);
+                } else ui.previewBccWrap.style.display = 'none';
+            };
+
+            const updateUI = () => {
+                const validRecords = state.skipTemplateRow ? state.csvData.slice(1) : state.csvData;
+                const activeRecord = validRecords[state.selectedRecordIndex] || null;
+                const hasData = state.csvData.length > 0;
+                const hasValid = validRecords.length > 0;
+                const emailMap = getEmailMap();
+
+                renderVisibility(hasData, hasValid);
+                renderMetadata(hasData, hasValid, validRecords);
+                
+                if (hasValid) {
+                    renderVariables();
+                    renderRecordsList(validRecords, emailMap);
+                }
+                
+                renderFormState();
+                renderPreview(activeRecord, emailMap);
+            };
+
+            // --- 7. CORE LOGIC ---
+            const handleCSVUpload = (str, filename) => {
+                const { data, fields } = parseCSV(str);
+                if (!data.length) return;
+                
+                state.headers = fields;
+                state.csvData = data;
+                state.csvFilename = filename;
+                state.zipFilename = `${filename.replace(/\.[^/.]+$/, "")}_eml_drafts_${new Date().toISOString().replace(/[:.]/g, '-').slice(0,16)}.zip`;
+                
+                const subjKey = fields.find(h => h.toLowerCase() === 'subject');
+                const bodyKey = fields.find(h => h.toLowerCase() === 'body');
+                
+                if (subjKey && bodyKey && (data[0][subjKey] || data[0][bodyKey])) {
+                    state.subjectTemplate = data[0][subjKey] || ''; 
+                    state.bodyTemplate = data[0][bodyKey] || '';
+                    state.hasEmbeddedTemplate = true; 
+                    state.skipTemplateRow = true;
+                } else {
+                    state.hasEmbeddedTemplate = false; 
+                    state.skipTemplateRow = false;
+                }
+                
+                state.selectedRecordIndex = 0;
+                updateUI();
+            };
+
+            const insertVariable = (header) => {
+                const refEl = state.lastFocused === 'subject' ? ui.inpSubject : ui.inpBody;
+                const start = refEl.selectionStart, end = refEl.selectionEnd, val = refEl.value, ins = `<<${header}>>`;
+                const newVal = val.substring(0, start) + ins + val.substring(end);
+                
+                if (state.lastFocused === 'subject') state.subjectTemplate = newVal; 
+                else state.bodyTemplate = newVal;
+                
+                updateUI();
+                refEl.focus(); 
+                refEl.setSelectionRange(start + ins.length, start + ins.length);
+            };
+
+            // --- 8. INITIALIZATION & EVENTS ---
+            const bindEvents = () => {
+                // Actions
+                ui.btnClear.addEventListener('click', () => { state.csvData = []; updateUI(); });
+                
+                ui.btnDemoStd.addEventListener('click', () => {
+                    handleCSVUpload(`To,CC,BCC,Name,Department\nalice@example.com;jill@example.com,supervisors@demo.com;managers@demo.com,noreply@demo.com,Alice and Jill,Engineering\nbob@example.com;bill@example.com,supervisors@demo.com;managers@demo.com,noreply@demo.com,Bob and Bill,Marketing`, "Demo_Standard.csv");
+                    setTimeout(() => { 
+                        state.subjectTemplate = "Quarterly Update for <<Department>>"; 
+                        state.bodyTemplate = "Hi <<Name>>,\n\nHere are the updates for the <<Department>> team.\n\nBest,\nManagement"; 
+                        state.hasEmbeddedTemplate = false; state.skipTemplateRow = false; updateUI(); 
+                    }, 50);
+                });
+
+                ui.btnDemoEmb.addEventListener('click', () => {
+                    handleCSVUpload(`Subject,Body,To,CC,BCC,Name,Role\n"Let's Welcome <<Name>>, our new <<Role>>!","Hello Company,\n\nWe'd like to introduce our new <<Role>>, <<Name>>!\n\nCheers,\nThe Company","","","",""\n"","",broadcast@demo.com,charlie@demo.com;chad@demo.com;supervisors@demo.com;managers@demo.com,noreply@demo.com,Charlie and Chad,Managers\n"","",broadcast@demo.com,dave@demo.com;don@demo.com;supervisors@demo.com;managers@demo.com,noreply@demo.com,Dave and Don,Analysts`, "Demo_Embedded.csv");
+                });
+
+                // File Upload Drag & Drop
+                ui.uploadZone.addEventListener('click', (e) => { 
+                    if (e.target.id === 'upload-zone' || e.target.closest('#upload-ui-empty')) ui.fileInput.click(); 
+                });
+                ui.fileInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0]; if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = e => handleCSVUpload(e.target.result, file.name);
+                    reader.readAsText(file); e.target.value = '';
+                });
+                ui.uploadZone.addEventListener('dragover', e => { e.preventDefault(); ui.uploadZone.classList.add('border-indigo-500', 'bg-indigo-900/20'); });
+                ui.uploadZone.addEventListener('dragleave', e => { e.preventDefault(); ui.uploadZone.classList.remove('border-indigo-500', 'bg-indigo-900/20'); });
+                ui.uploadZone.addEventListener('drop', e => {
+                    e.preventDefault(); ui.uploadZone.classList.remove('border-indigo-500', 'bg-indigo-900/20');
+                    const file = e.dataTransfer.files[0]; if (!file) return;
+                    const reader = new FileReader(); reader.onload = e => handleCSVUpload(e.target.result, file.name); reader.readAsText(file);
+                });
+
+                // Form Inputs
+                ui.chkSkip.addEventListener('change', e => { state.skipTemplateRow = e.target.checked; state.selectedRecordIndex = 0; updateUI(); });
+                ui.chkHtml.addEventListener('change', e => { state.isHtml = e.target.checked; updateUI(); });
+                ui.inpSubject.addEventListener('input', e => { state.subjectTemplate = e.target.value; updateUI(); });
+                ui.inpSubject.addEventListener('focus', () => { state.lastFocused = 'subject'; });
+                ui.inpBody.addEventListener('input', e => { state.bodyTemplate = e.target.value; updateUI(); });
+                ui.inpBody.addEventListener('focus', () => { state.lastFocused = 'body'; });
+                ui.inpZipname.addEventListener('input', e => { state.zipFilename = e.target.value; });
+
+                // Download / Export actions
+                ui.btnCopyBody.addEventListener('click', () => {
+                    const valid = state.skipTemplateRow ? state.csvData.slice(1) : state.csvData;
+                    navigator.clipboard.writeText(replaceVars(state.bodyTemplate, valid[state.selectedRecordIndex]));
+                });
+
+                ui.btnDlSingle.addEventListener('click', () => {
+                    const valid = state.skipTemplateRow ? state.csvData.slice(1) : state.csvData;
+                    const rec = valid[state.selectedRecordIndex]; if (!rec) return;
+                    
+                    const subj = replaceVars(state.subjectTemplate, rec);
+                    const body = replaceVars(state.bodyTemplate, rec);
+                    const padLen = String(valid.length).length > 2 ? String(valid.length).length : 3;
+                    const cleanSubj = subj.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50) || 'Draft';
+                    const filename = `${String(state.selectedRecordIndex + 1).padStart(padLen, '0')}_${cleanSubj}.eml`;
+                    
+                    const url = URL.createObjectURL(new Blob([generateEML(rec, subj, body)], { type: 'message/rfc822' }));
+                    const a = Object.assign(document.createElement('a'), { href: url, download: filename });
+                    a.click(); URL.revokeObjectURL(url);
+                });
+
+                ui.btnDlZip.addEventListener('click', () => {
+                    const valid = state.skipTemplateRow ? state.csvData.slice(1) : state.csvData;
+                    const zip = new ZipWriter();
+                    const padLen = String(valid.length).length > 2 ? String(valid.length).length : 3;
+                    
+                    valid.forEach((rec, i) => {
+                        const subj = replaceVars(state.subjectTemplate, rec);
+                        const body = replaceVars(state.bodyTemplate, rec);
+                        const cleanSubj = subj.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50) || 'Draft';
+                        const filename = `${String(i + 1).padStart(padLen, '0')}_${cleanSubj}.eml`;
+                        zip.addFile(filename, generateEML(rec, subj, body));
+                    });
+                    
+                    const url = URL.createObjectURL(zip.build());
+                    const a = Object.assign(document.createElement('a'), { href: url, download: state.zipFilename || 'drafts.zip' });
+                    a.click(); URL.revokeObjectURL(url);
+                });
+            };
+
+            const initDOM = () => {
+                const get = id => $(id);
+                // Map logical names to real DOM IDs
+                Object.assign(ui, {
+                    btnClear: get('btn-clear-data'), btnDemoStd: get('btn-demo-std'), btnDemoEmb: get('btn-demo-emb'),
+                    btnCopyBody: get('btn-copy-body'), btnDlSingle: get('btn-dl-single'), btnDlZip: get('btn-dl-zip'),
+                    uploadZone: get('upload-zone'), fileInput: get('file-input'), 
+                    uploadEmpty: get('upload-ui-empty'), uploadLoaded: get('upload-ui-loaded'),
+                    sectionStep2: get('step2-section'), sectionStep3: get('step3-section'), sectionFooter: get('footer-action'),
+                    skipWrapper: get('skip-template-wrapper'), chkSkip: get('chk-skip-template'), chkHtml: get('chk-is-html'),
+                    lblFilename: get('lbl-filename'), lblRowCount: get('lbl-row-count'), 
+                    lblDraftsCount: get('lbl-drafts-count'), lblPackCount: get('lbl-pack-count'),
+                    lblPlain: get('lbl-plain'), lblHtml: get('lbl-html'), toggleCircle: get('toggle-circle'),
+                    varsContainer: get('vars-container'), recordsList: get('records-list'),
+                    inpSubject: get('input-subject'), inpBody: get('input-body'), inpZipname: get('input-zipname'),
+                    previewSubj: get('preview-subj'), previewBodyHtml: get('preview-body-html'), previewBodyText: get('preview-body-text'),
+                    previewTo: get('preview-to'), previewCcWrap: get('preview-cc-wrap'), previewCc: get('preview-cc'),
+                    previewBccWrap: get('preview-bcc-wrap'), previewBcc: get('preview-bcc')
+                });
+            };
+
+            const initIcons = () => {
+                const inject = (id, iconName) => { const el = $(id); if(el) el.innerHTML = ICONS[iconName]; };
+                inject('icon-header-mail', 'mail'); inject('icon-play', 'play'); inject('icon-file-json', 'fileJson');
+                inject('icon-chevron-right', 'chevronRight'); inject('icon-upload', 'upload'); inject('icon-check', 'check');
+                inject('icon-copy', 'copy'); inject('icon-file-text', 'fileText'); inject('icon-download', 'download');
+            };
+
+            // Module Public API
+            return {
+                init: () => {
+                    initDOM();
+                    initIcons();
+                    bindEvents();
+                }
+            };
+
+        })();
+
+        // Bootstrap App on load
+        document.addEventListener('DOMContentLoaded', EmlApp.init);
     </script>
 </body>
 </html>

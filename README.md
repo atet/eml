@@ -125,6 +125,47 @@ Issue | Solution
 --- | ---
 **"It's not working!"** | This concise tutorial has distilled hours of sweat, tears, and troubleshooting; _it can't not work_
 
+### Subject Line Base64 Encoding in `*.eml` File
+
+The subject line in the output EML file is encoded to ensure that special characters, emojis, and international languages display correctly when the `*.eml` file is opened in an email client (like Microsoft Outlook, Apple Mail, or Thunderbird).
+
+#### The Technical Reason (RFC 2047)
+
+By default, the official Internet standard for email (RFC 2822) mandates that email headers (like "`To`", "`From`", and "`Subject`") can only contain basic 7-bit ASCII characters (standard English letters, numbers, and basic punctuation).
+
+If a user generates a CSV where the subject line contains:
+
+* Emojis (e.g., "Action Required 🚨")
+* Accented characters (e.g., "Résumé for René")
+* Non-Latin scripts (e.g., Japanese, Arabic, Chinese)
+
+...and you inject them as raw text into the header, the email client will often mangle the text, display question marks (`???`), **or fail to parse the file entirely**.
+
+#### How the Encoding Works
+
+To get around this limitation, the email standard uses a MIME extension (RFC 2047) that allows non-ASCII text in headers using a very specific syntax:
+
+```
+=?charset?encoding?encoded-text?=
+```
+
+Breaking down the code `Subject: =?utf-8?B?...?=`:
+
+* `=?` and `?=` tell the email client: "*Pay attention, the following text is encoded.*"
+* `utf-8` specifies the character set, which supports virtually every character and emoji in existence.
+* `B` stands for `Base64`. It tells the client how the text was scrambled into safe ASCII characters.
+* `${encodeUtf8B64(subj)}` is your JavaScript translating the raw subject string into a safe `Base64` string.
+
+#### Example
+
+If your generated subject is "Café ☕":
+
+* It is converted to UTF-8 bytes.
+* It is converted to Base64: `Q2Fmw6kg4☕` (simplified example).
+* It gets written to the file as: `Subject: =?utf-8?B?Q2Fmw6kg4☕?=`
+
+When you double-click the downloaded `*.eml` file, the email client sees that string, decodes it behind the scenes, and perfectly renders "Café ☕" in the subject line.
+
 —</br>
 [Back to Top](#table-of-contents)
 
