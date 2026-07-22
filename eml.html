@@ -330,7 +330,7 @@
                         </div>
                         
                         <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-950 p-6 rounded-2xl border border-slate-800 relative">
-                            <div id="preview-body-html" class="text-sm hidden"></div>
+                            <iframe id="preview-body-html" sandbox class="w-full h-full border-0 hidden"></iframe>
                             <pre id="preview-body-text" class="font-mono text-sm whitespace-pre-wrap leading-relaxed"></pre>
                         </div>
 
@@ -348,7 +348,7 @@
         </main>
 
         <footer class="max-w-7xl mx-auto px-8 py-10 text-center text-sm text-slate-500">
-            <p><a href="https://github.com/atet/eml" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 transition-colors">v1.0</a></p>
+            <p><a href="https://github.com/atet/eml" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 transition-colors">v1.1</a></p>
         </footer>
 
         <!-- ============================== BOTTOM ACTION BAR ============================== -->
@@ -507,7 +507,6 @@
             const formatEmails = str => formatEmailsArray(str).join(', ');
             const replaceVars = (text, record) => text?.replace(/<<([^>]+)>>/g, (m, k) => record?.[k] ?? m) || '';
             const encodeUtf8B64 = str => btoa(String.fromCharCode(...new TextEncoder().encode(str)));
-
             const generateEML = (record, subj, body) => {
                 let eml = `X-Unsent: 1\r\n`;
                 const map = getEmailMap();
@@ -517,6 +516,12 @@
                 eml += `Subject: =?utf-8?B?${encodeUtf8B64(subj)}?=\r\nMIME-Version: 1.0\r\nContent-Type: ${state.isHtml ? 'text/html' : 'text/plain'}; charset=utf-8\r\nContent-Transfer-Encoding: 8bit\r\n\r\n${body}`;
                 return eml;
             };
+            const escapeHTML = (str) => String(str || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
 
             // --- 6. RENDERERS ---
             const renderVisibility = (hasData, hasValid) => {
@@ -542,7 +547,7 @@
 
             const renderVariables = () => {
                 ui.varsContainer.innerHTML = state.headers.map(h => 
-                    `<button class="font-mono text-xs px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/20 transition-colors" data-var="${h}">${h}</button>`
+                    `<button class="font-mono text-xs px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/20 transition-colors" data-var="${escapeHTML(h)}">${escapeHTML(h)}</button>`
                 ).join('');
                 
                 document.querySelectorAll('#vars-container button').forEach(b => 
@@ -557,7 +562,7 @@
                             <span class="text-xs font-bold text-slate-400">Row ${state.skipTemplateRow ? i + 2 : i + 1}</span>
                             <div class="w-4 h-4 ${state.selectedRecordIndex === i ? 'text-indigo-500' : 'text-slate-500'}">${ICONS.chevronRight}</div>
                         </div>
-                        <div class="font-medium text-sm truncate">${rec[emailMap.to] || '(No To Address)'}</div>
+                        <div class="font-medium text-sm truncate">${escapeHTML(rec[emailMap.to]) || '(No To Address)'}</div>
                     </button>
                 `).join('');
                 
@@ -589,7 +594,7 @@
                 ui.previewSubj.innerText = previewSubj;
                 
                 if (state.isHtml) {
-                    ui.previewBodyHtml.innerHTML = previewBody;
+                    ui.previewBodyHtml.srcdoc = previewBody;
                     ui.previewBodyHtml.style.display = 'block';
                     ui.previewBodyText.style.display = 'none';
                 } else {
@@ -598,7 +603,7 @@
                     ui.previewBodyText.style.display = 'block';
                 }
 
-                const buildChips = (str) => formatEmailsArray(str).map(em => `<span class="bg-slate-800 text-slate-200 px-3 py-1 rounded-full text-sm font-medium border border-slate-700">${em}</span>`).join('');
+                const buildChips = (str) => formatEmailsArray(str).map(em => `<span class="bg-slate-800 text-slate-200 px-3 py-1 rounded-full text-sm font-medium border border-slate-700">${escapeHTML(em)}</span>`).join('');
                 
                 ui.previewTo.innerHTML = buildChips(activeRecord[emailMap.to]);
                 
