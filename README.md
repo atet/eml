@@ -13,7 +13,7 @@ Generating bulk email drafts usually means limited mail merging features, paying
 
 This simple app will allow you to convert a `*.csv` file of templates, email addresses, and variables to `*.eml` draft emails that are ready to be sent by your favorite email client.
 
-†This was my Google AI Professional Certificate capstone project.
+[†This was my Google AI Professional Certificate capstone project.](#other-resources)
 
 ----------------------------------------------------------------------------
 
@@ -53,7 +53,7 @@ This is a **100% client-side, offline-ready** Single-Page Application (SPA) that
 
 Create a spreadsheet and save it as a `*.csv` file (for Microsoft Word, use "`CSV (Comma delimited) (*.csv)`").
 
-* **Required:** You must have a column named exactly "`To`".
+* **Required:** You must have a column named "`To`" and multiple emails can be separated by a semicolon ("`;`").
 * ***Optional Recipients:*** You can also include "`CC`" and "`BCC`" columns. 
 * **Variables:** Any other columns you add (e.g., "`FirstName`", "`InvoiceURL`", "`Department`", etc.) automatically become injectible variables!
 * ***Optional Templates***: If you put "`Subject`" and "`Body`" columns in the first row of your CSV, the app will automatically embed your template.
@@ -112,7 +112,7 @@ The barrier to creating custom software is gone. What will you build next?
 
 **Description** | **URL Link**
 --- | ---
-null | null
+Google AI Professional Certificate (Coursera) | https://grow.google/ai-professional
 
 —</br>
 [Back to Top](#table-of-contents)
