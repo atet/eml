@@ -34,13 +34,13 @@ This simple app will allow you to convert a `*.csv` file of templates, email add
 
 ## 0. Requirements
 
-This is a **100% client-side, offline-ready** Single-Page Application (SPA) that takes a standard `*.csv` file and instantly generates local `*.eml` email drafts. 
+This is a **100% client-side, offline-ready** Single-Page Application (SPA): Just open the `eml.html` file in your web browser and take a `*.csv` file with emails and instantly generate `*.eml` email drafts. 
 
 ### Why a Single-Page HTML App?
 
 * **Ultimate Privacy:** Your data never leaves your browser. There is no backend, no database, and no API. 
 * **Zero Maintenance:** No npm installs, no build steps, and no servers to maintain.
-* **Extreme Portability:** The entire application is just one file. You can download the `*.html` file, put it on a USB drive, and run it on a completely air-gapped computer.
+* **Extreme Portability:** The entire application is just one file. You can download the `eml.html` file, put it on a USB drive, and run it on a completely air-gapped computer.
 
 —</br>
 [Back to Top](#table-of-contents)
@@ -66,7 +66,7 @@ Example:
 
 ### 1.2. Upload & Configure
 
-1.2.1. Open the app in any modern web browser and click on "`Upload File`" or drag-and-drop your CSV file into the upload zone.
+1.2.1. Open the `eml.html` file in any modern web browser and click on "`Upload File`" or drag-and-drop your CSV file into the upload zone.
 
 1.2.2. Templates:
    * Templates in "`Subject`" and "`Body`" within the `*.csv` file will automatically be loaded
@@ -92,7 +92,7 @@ Example:
 
 ### Build Your Own LLM Micro-Apps!
 
-This app wasn't built by spending weeks setting up a complex JavaScript stack, it was built iteratively by communicating with a Large Language Model (LLM). 
+This app wasn't built by spending days setting up a complex JavaScript stack, it was built iteratively by communicating with a Large Language Model (LLM). 
 
 You can build incredibly useful, customized single-page apps for your own daily workflows by leveraging LLMs. Here are some best practices on how to instruct an AI to build apps like this one:
 
